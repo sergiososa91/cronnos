@@ -1,0 +1,463 @@
+body {
+  background-color: #101906;
+  background: url('../img/Background.png') no-repeat center center fixed;
+  background-size: cover;
+  position: absolute;
+  color: #101906;
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  height: 100vh;
+  position: relative;
+  z-index: -1;
+}
+
+/* MQ para mobile */
+@media only screen and (max-width: 500px) {
+  body {
+    background: #040601;
+  }
+}
+
+/* MQ para desktop */
+@media only screen and (min-width: 501px) {
+  .background-overlay {
+    position: absolute;
+    background: url('../img/Background.png') no-repeat center center fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    z-index: -1;
+  }
+}
+
+/* Reseteo de márgenes */
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/* Header con logo y navegación */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #101906;
+  border-radius: 24px;
+  margin: 10px;
+  z-index: 1;
+}
+
+.navbar {
+list-style: none;
+display: flex;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+}
+
+.navbar ul li {
+margin: 0 10px;
+}
+
+.navbar ul li a {
+text-decoration: none;
+color: #F2AA42;
+font-size: 18px;
+}
+
+.navbar ul li a:hover {
+text-decoration: underline;
+color: #F2AA42
+}
+
+.actual-page {
+  font-weight:bolder;
+  color: #F2AA42
+}
+
+/* Estilo del logo */
+.logo img {
+  height: 50px;
+}
+
+
+/* Estilos de los textos */
+main {
+  flex: 1;
+  text-align: center;
+  color: #EBE9E7;
+  z-index: 1;
+}
+
+main h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+  font-weight: bolder;
+}
+
+main h2 {
+  font-size: 24px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: #EBE9E7;
+  font-weight: bolder;
+}
+
+main h3 {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  color: #EBE9E7;
+  font-weight: bold;
+}
+
+main h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #EBE9E7;
+}
+
+main h5 {
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: #EBE9E7;
+}
+
+main p {
+  font-size: 24px;
+  width: 80%;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+.index-title {
+  font-size: 4em;
+  margin: 0;
+  padding: 0;
+  font-weight: bolder;
+}
+
+@media only screen and (max-width: 500px) {
+  main h1 {
+    display: none;
+  }
+  main h2 {
+    display: none;
+  }
+  main .page-description {
+    display: none;
+  }
+
+
+  }
+
+/* Estilos de contenedores de secciones */
+.container {
+  max-width: 95%;
+  margin: 0 auto;
+  padding: 0 10px;
+  background-color: #101906;
+  border-radius: 24px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+/* Estilos de secciones de películas e imágenes */
+.movies {
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+.movie-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  padding-left: 10px;
+}
+
+.movie {
+  flex: 0 0 calc(33% - 33px);
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie img {
+  width: 100%;
+  height: 200px;
+  border-radius: 24px;
+  object-fit: cover;
+  display: block;
+  border-image: fill;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Información de la película (título y duración) */
+.movie-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: left;
+  transition: background 0.3s ease;
+}
+
+.movie p {
+  margin-top: 10px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.movie-info .movie-length {
+  font-size: 14px;
+  font-weight: bolder;
+  color: #F2AA42;
+}
+
+/* Efecto de hover para la card */
+.movie:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos de cards para mobile */
+@media (max-width: 768px) {
+  .movie {
+      flex: 0 0 calc(50% - 20px);
+      max-width: calc(50% - 20px);
+  }
+}
+
+/* Estilos de secciones de amigos, avatares y textos*/
+.section-title p {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  color: #EBE9E7;
+  font-weight: bold;
+  text-align: center;
+}
+
+.friends-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  padding-left: 10px;
+}
+
+.avatar {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatar img {
+  height: 150px;
+  border-radius: 24px;
+  object-fit: cover;
+  display: block;
+  border-image: fill;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: left;
+  transition: background 0.3s ease;
+}
+
+.avatar-info p {
+  margin-top: 10px;
+  margin: 0;
+  font-size: 14px;
+  font-weight:normal
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.profile img {
+  width: 200px;
+  height: 200px;
+  border-radius: 24px;
+}
+
+.profile p {
+  font-size: 24px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: #EBE9E7;
+  font-weight: bolder;
+  text-align: center;
+}
+
+/*Container para reseñas*/
+.reviews-container {
+  max-width: 95%;
+  margin: 0 auto;
+  padding: 15px;
+  background-color: #101906;
+  border-radius: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.review {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+  background-color: #17221B;
+  padding: 15px;
+  border-radius: 24px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review p {
+  margin-top: 10px;
+  margin: 0;
+  font-size: 14px;
+}
+
+.review-content {
+  margin: 30px;
+  font-size: 16px;
+  color: #EBE9E7;
+}
+
+.user-info p {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #EBE9E7;
+  text-align:left;
+}
+
+/* Estilo de grilla de reseñas para mobile */
+@media (max-width: 768px) {
+  .review {
+      grid-template-columns: 1fr;
+  }
+
+}
+
+/* Reloj selector de tiempo */
+.timer { /* Va a quedar mucho más estético para las próximas entregas */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.container-reloj {
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 0 10px;
+  background-color: #101906;
+  border-radius: 24px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.time-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #151f0a;
+  border-radius: 36px;
+  padding: 20px;
+  margin: 10px 5px;
+}
+
+.time {
+  font-size: 70px;
+  color: #ffffff;
+}
+
+.label {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.colon {
+  font-size: 36px;
+  color: #ffffff;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-select {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 2px solid #F2AA42;
+  background-color: #101906;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.start-button {
+  background-color: #F2AA42;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 24px;
+  font-size: 24px;
+  cursor: pointer;
+  margin: 10px 10px 10px 10px;
+}
+
+/* Estilo del footer */
+footer {
+  background-color: #101906 (0, 0, 0, 0.5);
+  text-align: center;
+  padding: 10px 0;
+  z-index: 1;
+  padding-top: 20%;
+}
+
+footer p {
+  color: #EBE9E7;
+}
+
+@media only screen and (max-width: 500px) {
+  footer p {
+    display: none;
+  }
+  }

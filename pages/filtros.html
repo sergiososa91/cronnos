@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+
+    <!-- Enlace a la hoja de estilos CSS de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Enlace a CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <title> CRONNOS </title>
+</head>
+
+<body>
+
+<!-- Header -->
+<header>
+  <div class="logo">
+      <img src="../img/logo.png" alt="logocronnos" class="d-inline-block align-text-top">
+  </div>
+  <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link" href="../index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="perfil.html">Perfil</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link actual-page" aria-current="page" href="filtros.html">Filtros</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="amigos.html">Amigos</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="calendario.html">Calendario</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+</header>
+
+    <!-- Reloj temporizador para iniciar recomendación de películas y dropdowns para elegir género favorito, mood y situación -->
+<main>
+      <h1> ¿Cuánto tiempo tenés? </h1>
+        <p class="page-description">Indicá cuánto tiempo tenés disponible, qué género preferís y te damos la recomendación que necesitás. También podes pedir una recomendación aleatoria las veces que quieras.</p>
+      <div class="container-reloj">
+        <div class="timer">
+            <div class="time-section">
+              <span class="time">00</span>
+              <span class="label">Horas</span>
+            </div>
+              <span class="colon">:</span>
+            <div class="time-section">
+              <span class="time">00</span>
+              <span class="label">Minutos</span>
+            </div>
+        </div>
+      </div>
+
+    <div class="filters">
+        <select class="form-select" aria-label="selection">
+            <option selected>Género</option>
+            <option value="1">Terror</option>
+            <option value="2">Comedia</option>
+            <option value="3">Drama</option>
+            <option value="4">Animación</option>
+          </select>
+          <select class="form-select" aria-label="selection">
+            <option selected>Mood</option>
+            <option value="1">Alegre</option>
+            <option value="2">Triste</option>
+            <option value="3">Inquietante</option>
+          </select>
+          <select class="form-select" aria-label="selection">
+            <option selected>Situación</option>
+            <option value="1">Tarde de lluvia</option>
+            <option value="2">Noche con amigos</option>
+            <option value="3">Cena romántica</option>
+          </select>
+    </div>
+    <button class="start-button">Iniciar</button>
+</main>
+
+    <footer>
+        <p>Todos los derechos reservados</p> 
+    </footer>
+
+    <!-- Script JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+</html>

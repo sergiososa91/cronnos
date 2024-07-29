@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+
+    <!-- Enlace a la hoja de estilos CSS de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Enlace a CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <title> CRONNOS </title>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="logo">
+        <img src="img/logo.png" alt="logocronnos" class="d-inline-block align-text-top">
+    </div>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link actual-page" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/perfil.html">Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/filtros.html">Filtros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/amigos.html">Amigos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/calendario.html">Calendario</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  </header>
+
+<!-- Contenido del Home -->
+    <main>
+        <h1 class="index-title"> CRONNOS </h1>
+        <h2> Descubrí el cine perfecto para tu tiempo disponible </h2>
+        <p class="page-description"> 
+            Cronnos es la plataforma definitiva para los amantes del cine que buscan recomendaciones personalizadas basadas en su tiempo disponible. ¿Tenés sólo 30 minutos? ¿O quizás una tarde entera? Con Cronnos, siempre vas a encontrar la película perfecta para ver sin importar cuánto tiempo tengas.
+        </p>
+    
+    <!-- Reloj temporizador para iniciar recomendación de películas -->
+     <h2> Recomendación Express </h2>
+        <div class="container-reloj">
+            <div class="timer">
+                <div class="time-section">
+                    <span class="time">00</span>
+                    <span class="label">Horas</span>
+                </div>
+                    <span class="colon">:</span>
+                <div class="time-section">
+                    <span class="time">00</span>
+                    <span class="label">Minutos</span>
+                </div>
+            </div>
+        </div>
+            <button class="start-button">Iniciar</button>
+
+    <!-- Carruseles con estrenos semanales, tendencias y Watchlist del usuario -->
+    <section class="section-title">
+        <p>Estrenos Semanales</p>
+    </section>
+    <section class="movies">
+          <div class="container">
+             <div class="movie-carousel">
+                <div class="movie">
+                    <img src="img/Inside Out 2.webp" alt="insideout2">
+                    <div class="movie-info">
+                        <p>Inside Out 2</p>
+                        <p class="movie-length">1h 36m</p>
+                        </div>
+                </div>
+                <div class="movie">
+                    <img src="img/Juniper.webp" alt="juniper">
+                    <div class="movie-info">
+                        <p>Juniper</p>
+                        <p class="movie-length">1h 34m</p>
+                    </div>
+                </div>
+                <div class="movie">
+                    <img src="img/La Ruptura.jpg" alt="laruptura">
+                    <div class="movie-info">
+                        <p>La Ruptura</p>
+                        <p class="movie-length">1h 18m</p>
+                    </div>
+                </div>
+                <div class="movie">
+                    <img src="img/Late Night With The Devil.jpg" alt="latenight">
+                    <div class="movie-info">
+                        <p>Late Night With The Devil</p>
+                        <p class="movie-length">1h 29m</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-title">
+        <p>Estrenos Semanales</p>
+    </section>
+    <section class="movies">
+    <div class="container"> 
+        <div class="movie-carousel">
+            <div class="movie">
+                <img src="img/Inside Out 2.webp" alt="insideout2">
+                <div class="movie-info">
+                    <p>Inside Out 2</p>
+                    <p class="movie-length">1h 36m</p>
+                </div>
+            </div>
+            <div class="movie">
+                <img src="img/Hit Man.webp" alt="hitman">
+                <div class="movie-info">
+                    <p>Hit Man</p>
+                    <p class="movie-length">1h 55m</p>
+                </div>
+            </div>
+            <div class="movie">
+                <img src="img/Poor Things.jpg" alt="poorthings">
+                <div class="movie-info">
+                    <p>Poor Things</p>
+                    <p class="movie-length">2h 21m</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-title">
+    <p>Vistas Por Amigos</p>
+</section>
+<section class="movies">
+    <div class="container">
+        <div class="movie-carousel">
+            <div class="movie">
+                <img src="img/Breakfast Club.jpg" alt="breakfastclub">
+                <div class="movie-info">
+                    <p>The Breakfast Club</p>
+                    <p class="movie-length">1h 37m</p>
+                </div>
+            </div>
+            <div class="movie">
+                <img src="img/May December.webp" alt="maydecember">
+                <div class="movie-info">
+                    <p>May December</p>
+                    <p class="movie-length">1h 57m</p>
+                </div>
+            </div>
+            <div class="movie">
+                <img src="img/Todo sobre Mi Madre.webp" alt="todosobre">
+                <div class="movie-info">
+                    <p>Todo Sobre Mi Madre</p>
+                    <p class="movie-length">1h 41m</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-title">
+    <p>Por Ver</p>
+</section>
+<section class="movies">
+    <div class="container">
+        <div class="movie-carousel">
+            <div class="movie">
+                <img src="img/Rosemarys Baby.jpg" alt="rosemarysbaby">
+                <div class="movie-info">
+                    <p>Rosemarys Baby</p>
+                    <p class="movie-length">2h 16m</p>
+                </div>
+            </div>
+            <div class="movie">
+                <img src="img/Inside Out 2.webp" alt="insideout2">
+                <div class="movie-info">
+                    <p>Inside Out 2</p>
+                    <p class="movie-length">1h 36m</p>
+                </div>
+            </div>
+            <div class="movie">
+                <img src="img/Breakfast Club.jpg" alt="breakfastclub">
+                <div class="movie-info">
+                    <p>The Breakfast Club</p>
+                    <p class="movie-length">1h 37m</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="background-overlay"></div>
+
+</main>
+
+<!-- Pie de página -->
+<footer>
+    <p>Todos los derechos reservados</p> 
+</footer>
+
+<!-- Script JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+</html>
