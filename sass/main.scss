@@ -1,0 +1,572 @@
+// Variables para colores y fuentes
+$background-color: #101906;
+$text-color: #101906;
+$mobile-background-color: #040601;
+$text-color-light: #EBE9E7;
+$highlight-color: #F2AA42;
+$overlay-color: rgba(0, 0, 0, 0.5);
+$font-family: "Nunito Sans", sans-serif;
+
+// Variables para tamaños
+$main-padding: 10px 20px;
+$border-radius: 24px;
+$box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+// Variable para el breakpoint
+$mobile-breakpoint: 768px;
+$small-screen: 500px;
+
+// Mixins para reutilizar código
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin box-shadow {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+@mixin responsive-card($width) {
+  flex: 0 0 calc(100% / $width - 33px);
+  max-width: calc(100% / $width - 33px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: $border-radius;
+  overflow: hidden;
+}
+
+@mixin review-card($width) {
+  flex: 0 0 calc(100% / $width - 33px);
+  max-width: calc(100% / $width - 33px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: $border-radius;
+  overflow: hidden;
+}
+
+@mixin friend-card($width){
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: $border-radius;
+  overflow: hidden;
+}
+
+// Estilos globales
+body {
+  background-color: $background-color;
+  background: url('../img/Background.png') no-repeat center center fixed;
+  background-size: cover;
+  position: absolute;
+  color: $text-color;
+  font-family: $font-family;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  height: 100vh;
+  position: relative;
+  z-index: -1;
+
+  @media only screen and (max-width: $small-screen) {
+    background: $mobile-background-color;
+  }
+}
+
+.background-overlay {
+  position: absolute;
+  background: url('../img/Background.png') no-repeat center center fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  z-index: -1;
+
+  @media only screen and (max-width: $small-screen) {
+    display: none;
+  }
+}
+
+// Reseteo de márgenes
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+// Header con logo y navegación
+header {
+  @include flex-center;
+  justify-content: space-between;
+  padding: $main-padding;
+  background-color: $background-color;
+  border-radius: $border-radius;
+  margin: 10px;
+  z-index: 1;
+
+  .navbar {
+    list-style: none;
+    display: flex;
+
+    ul {
+      list-style: none;
+      display: flex;
+
+      li {
+        margin: 0 10px;
+
+        a {
+          text-decoration: none;
+          color: $highlight-color;
+          font-size: 18px;
+
+          &:hover {
+            text-decoration: underline;
+            color: $highlight-color;
+          }
+        }
+      }
+    }
+
+    .actual-page {
+      font-weight: bolder;
+      color: $highlight-color;
+    }
+  }
+
+  .logo img {
+    height: 50px;
+  }
+}
+
+// Estilos de los textos
+main {
+  flex: 1;
+  text-align: center;
+  color: $text-color-light;
+  z-index: 1;
+
+  h1, h2, h3, h4, h5 {
+    margin-bottom: 10px;
+    color: $text-color-light;
+    font-weight: bolder;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 16px;
+  }
+
+  h5 {
+    font-size: 12px;
+  }
+
+  p {
+    margin: 0 auto;
+    text-align: justify;
+  }
+
+  .page-description{
+    font-size: 24px;
+    width: 80%;
+    margin: 0 auto;
+    text-align: justify;
+  }
+
+  .index-title {
+    font-size: 4em;
+    margin: 0;
+    padding: 0;
+    font-weight: bolder;
+  }
+
+  @media only screen and (max-width: $small-screen) {
+    h1, h2, .page-description {
+      display: none;
+    }
+  }
+}
+
+// Estilos de contenedores de secciones
+.container {
+  max-width: 95%;
+  margin: 0 auto;
+  padding: 0 10px;
+  background-color: $background-color;
+  border-radius: $border-radius;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+// Estilos de secciones de películas e imágenes
+.movies {
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+.movie-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 15px 10px 15px 10px;
+}
+
+.movie {
+  @include responsive-card(3);
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 200px;
+    border-radius: $border-radius;
+    object-fit: cover;
+    display: block;
+    border-image: fill;
+    @include box-shadow;
+  }
+
+  .movie-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: left;
+    transition: background 0.3s ease;
+
+    p {
+      margin: 0;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .movie-length {
+      font-size: 14px;
+      font-weight: bolder;
+      color: $highlight-color;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    @include box-shadow;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    @include responsive-card(2);
+  }
+}
+
+// Estilos de secciones de amigos, avatares y textos
+.section-title p {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  color: $text-color-light;
+  font-weight: bold;
+  text-align: center;
+}
+
+.profile img {
+  width: 200px;
+  height: 200px;
+  border-radius: $border-radius;
+}
+
+.profile p {
+  font-size: 24px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: $text-color-light;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.friends-container{
+  max-width: 100%;
+  display: flex;
+  overflow-x: auto;
+  flex-direction: row;
+  align-items: start;
+}
+
+.user-friend {
+  max-width: 95%;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  border-radius: $border-radius;
+  align-items: stretch;
+  justify-content: flex-start;
+
+  .avatar {
+    position: relative;
+    display: inline-block;
+    object-fit: cover;
+    border-image: fill;
+    @include friend-card(3);
+
+    img {
+      width: auto;
+      height: 150px;
+      border-radius: $border-radius;
+      object-fit: cover;
+      display: block;
+      border-image: fill;
+      @include box-shadow;
+    }
+
+    &:hover {
+    transform: scale(1.05);
+    @include box-shadow;
+    }
+  }
+}
+
+  .avatar-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: left;
+    transition: background 0.3s ease;
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: left;
+    }
+  }
+
+
+// Container para reseñas
+.reviews-container {
+  max-width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 15px;
+  background-color: $background-color;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+.reviews-container2{
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: $background-color;
+}
+
+.review{
+  max-width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  background-color: $text-color;
+  border-radius: $border-radius;
+  padding: 10px;
+}
+
+.review-user{
+  flex: 1;
+  background-color: #12200A;
+  border-radius: $border-radius;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+
+  p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: $text-color-light;
+    text-align: center;
+  }
+
+  .review-movie{
+      @include review-card(1);
+      position: relative;
+    
+      img {
+        width: 100%;
+        height: 200px;
+        border-radius: $border-radius;
+        object-fit: cover;
+        display: block;
+        border-image: fill;
+        @include box-shadow;
+      }
+    
+      .movie-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        box-sizing: border-box;
+        text-align: left;
+        transition: background 0.3s ease;
+    
+        p {
+          margin: 0;
+          font-size: 18px;
+          font-weight: bold;
+          text-align: left;
+        }
+      }
+      &:hover {
+        transform: scale(1.05);
+        @include box-shadow;
+      }
+  }
+}
+
+.review-content{
+  flex: 2;
+  background-color: #12200A;
+  border-radius: $border-radius;
+  padding: 20px;
+  box-sizing: border-box;
+
+  p {
+    margin: 0;
+    font-size: 16px;
+    color: $text-color-light;
+  }
+}
+}
+
+// Media Query para dispositivos móviles
+@media (max-width: $mobile-breakpoint) {
+  .reviews-container {
+    flex-direction:column;
+
+    .reviews-container2{
+      flex-direction:column;
+      margin-bottom: 5px;
+      align-items: center;
+
+      .review{
+        flex-direction:column;
+        align-items: center;
+
+        .review-user {
+          width: 100%;
+        }
+      }
+      .review-content {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Reloj selector de tiempo
+.timer {
+  @include flex-center;
+  margin: 20px 0;
+}
+
+.container-reloj {
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 0 10px;
+  background-color: $background-color;
+  border-radius: $border-radius;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.time-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #151f0a;
+  border-radius: 36px;
+  padding: 20px;
+  margin: 10px 5px;
+
+  .time, .label, .colon {
+    color: #ffffff;
+  }
+
+  .time {
+    font-size: 70px;
+  }
+
+  .label, .colon {
+    font-size: 20px;
+  }
+
+  .colon {
+    font-size: 36px;
+  }
+}
+
+.filters {
+  @include flex-center;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  .form-select {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 2px solid $highlight-color;
+    background-color: $background-color;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+  }
+}
+
+.start-button {
+    background-color: $highlight-color;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: $border-radius;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 10px 10px 10px 10px;
+  }
+
+// Estilo del footer
+footer {
+  text-align: center;
+  padding: 10px 0;
+  z-index: 1;
+  padding-top: 20%;
+
+  p {
+    color: $text-color-light;
+
+    @media only screen and (max-width: $small-screen) {
+      display: none;
+    }
+  }
+}

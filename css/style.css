@@ -1,6 +1,6 @@
 body {
   background-color: #101906;
-  background: url('../img/Background.png') no-repeat center center fixed;
+  background: url("../img/Background.png") no-repeat center center fixed;
   background-size: cover;
   position: absolute;
   color: #101906;
@@ -13,154 +13,121 @@ body {
   position: relative;
   z-index: -1;
 }
-
-/* MQ para mobile */
 @media only screen and (max-width: 500px) {
   body {
     background: #040601;
   }
 }
 
-/* MQ para desktop */
-@media only screen and (min-width: 501px) {
+.background-overlay {
+  position: absolute;
+  background: url("../img/Background.png") no-repeat center center fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  z-index: -1;
+}
+@media only screen and (max-width: 500px) {
   .background-overlay {
-    position: absolute;
-    background: url('../img/Background.png') no-repeat center center fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    z-index: -1;
+    display: none;
   }
 }
 
-/* Reseteo de márgenes */
 * {
   margin: 0;
   box-sizing: border-box;
   padding: 0;
 }
 
-/* Header con logo y navegación */
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  justify-content: space-between;
   padding: 10px 20px;
   background-color: #101906;
   border-radius: 24px;
   margin: 10px;
   z-index: 1;
 }
-
-.navbar {
-list-style: none;
-display: flex;
-}
-
-.navbar ul {
+header .navbar {
   list-style: none;
   display: flex;
 }
-
-.navbar ul li {
-margin: 0 10px;
+header .navbar ul {
+  list-style: none;
+  display: flex;
 }
-
-.navbar ul li a {
-text-decoration: none;
-color: #F2AA42;
-font-size: 18px;
+header .navbar ul li {
+  margin: 0 10px;
 }
-
-.navbar ul li a:hover {
-text-decoration: underline;
-color: #F2AA42
+header .navbar ul li a {
+  text-decoration: none;
+  color: #F2AA42;
+  font-size: 18px;
 }
-
-.actual-page {
-  font-weight:bolder;
-  color: #F2AA42
+header .navbar ul li a:hover {
+  text-decoration: underline;
+  color: #F2AA42;
 }
-
-/* Estilo del logo */
-.logo img {
+header .navbar .actual-page {
+  font-weight: bolder;
+  color: #F2AA42;
+}
+header .logo img {
   height: 50px;
 }
 
-
-/* Estilos de los textos */
 main {
   flex: 1;
   text-align: center;
   color: #EBE9E7;
   z-index: 1;
 }
-
+main h1, main h2, main h3, main h4, main h5 {
+  margin-bottom: 10px;
+  color: #EBE9E7;
+  font-weight: bolder;
+}
 main h1 {
   font-size: 48px;
-  margin-bottom: 10px;
-  font-weight: bolder;
 }
-
 main h2 {
   font-size: 24px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  color: #EBE9E7;
-  font-weight: bolder;
 }
-
 main h3 {
   font-size: 20px;
-  margin-top: 20px;
-  margin-bottom: 5px;
-  color: #EBE9E7;
-  font-weight: bold;
 }
-
 main h4 {
   font-size: 16px;
-  margin-bottom: 10px;
-  color: #EBE9E7;
 }
-
 main h5 {
   font-size: 12px;
-  margin-bottom: 10px;
-  color: #EBE9E7;
 }
-
 main p {
+  margin: 0 auto;
+  text-align: justify;
+}
+main .page-description {
   font-size: 24px;
   width: 80%;
   margin: 0 auto;
   text-align: justify;
 }
-
-.index-title {
+main .index-title {
   font-size: 4em;
   margin: 0;
   padding: 0;
   font-weight: bolder;
 }
-
 @media only screen and (max-width: 500px) {
-  main h1 {
+  main h1, main h2, main .page-description {
     display: none;
   }
-  main h2 {
-    display: none;
-  }
-  main .page-description {
-    display: none;
-  }
+}
 
-
-  }
-
-/* Estilos de contenedores de secciones */
 .container {
   max-width: 95%;
   margin: 0 auto;
@@ -171,7 +138,6 @@ main p {
   justify-content: flex-start;
 }
 
-/* Estilos de secciones de películas e imágenes */
 .movies {
   max-width: 95%;
   margin: 0 auto;
@@ -181,19 +147,17 @@ main p {
   display: flex;
   overflow-x: auto;
   gap: 20px;
-  padding-bottom: 15px;
-  padding-top: 15px;
-  padding-left: 10px;
+  padding: 15px 10px 15px 10px;
 }
 
 .movie {
-  flex: 0 0 calc(33% - 33px);
-  position: relative;
+  flex: 0 0 calc(33.3333333333% - 33px);
+  max-width: calc(33.3333333333% - 33px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 24px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
-
 .movie img {
   width: 100%;
   height: 200px;
@@ -201,11 +165,9 @@ main p {
   object-fit: cover;
   display: block;
   border-image: fill;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
-
-/* Información de la película (título y duración) */
-.movie-info {
+.movie .movie-info {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -216,36 +178,31 @@ main p {
   text-align: left;
   transition: background 0.3s ease;
 }
-
-.movie p {
-  margin-top: 10px;
+.movie .movie-info p {
   margin: 0;
   font-size: 18px;
   font-weight: bold;
   text-align: left;
 }
-
-.movie-info .movie-length {
+.movie .movie-info .movie-length {
   font-size: 14px;
   font-weight: bolder;
   color: #F2AA42;
 }
-
-/* Efecto de hover para la card */
 .movie:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
-
-/* Estilos de cards para mobile */
 @media (max-width: 768px) {
   .movie {
-      flex: 0 0 calc(50% - 20px);
-      max-width: calc(50% - 20px);
+    flex: 0 0 calc(50% - 33px);
+    max-width: calc(50% - 33px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 24px;
+    overflow: hidden;
   }
 }
 
-/* Estilos de secciones de amigos, avatares y textos*/
 .section-title p {
   font-size: 20px;
   margin-top: 20px;
@@ -253,55 +210,6 @@ main p {
   color: #EBE9E7;
   font-weight: bold;
   text-align: center;
-}
-
-.friends-carousel {
-  display: flex;
-  overflow-x: auto;
-  gap: 20px;
-  padding-bottom: 15px;
-  padding-top: 15px;
-  padding-left: 10px;
-}
-
-.avatar {
-  position: relative;
-  border-radius: 24px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.avatar img {
-  height: 150px;
-  border-radius: 24px;
-  object-fit: cover;
-  display: block;
-  border-image: fill;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.avatar-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  box-sizing: border-box;
-  text-align: left;
-  transition: background 0.3s ease;
-}
-
-.avatar-info p {
-  margin-top: 10px;
-  margin: 0;
-  font-size: 14px;
-  font-weight:normal
-}
-
-.avatar:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .profile img {
@@ -319,62 +227,185 @@ main p {
   text-align: center;
 }
 
-/*Container para reseñas*/
+.friends-container {
+  max-width: 100%;
+  display: flex;
+  overflow-x: auto;
+  flex-direction: row;
+  align-items: start;
+}
+
+.user-friend {
+  max-width: 95%;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 24px;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+.user-friend .avatar {
+  position: relative;
+  display: inline-block;
+  object-fit: cover;
+  border-image: fill;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 24px;
+  overflow: hidden;
+}
+.user-friend .avatar img {
+  width: auto;
+  height: 150px;
+  border-radius: 24px;
+  object-fit: cover;
+  display: block;
+  border-image: fill;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+.user-friend .avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.avatar-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: left;
+  transition: background 0.3s ease;
+}
+.avatar-info p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+}
+
 .reviews-container {
   max-width: 95%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   padding: 15px;
   background-color: #101906;
   border-radius: 24px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
-.review {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
+.reviews-container .reviews-container2 {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #101906;
+}
+.reviews-container .review {
+  max-width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
   gap: 20px;
-  background-color: #17221B;
-  padding: 15px;
+  background-color: #101906;
   border-radius: 24px;
-  margin-bottom: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 10px;
 }
-
-.review p {
-  margin-top: 10px;
+.reviews-container .review-user {
+  flex: 1;
+  background-color: #12200A;
+  border-radius: 24px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.reviews-container .review-user p {
   margin: 0;
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #EBE9E7;
+  text-align: center;
 }
-
-.review-content {
-  margin: 30px;
+.reviews-container .review-user .review-movie {
+  flex: 0 0 calc(100% - 33px);
+  max-width: calc(100% - 33px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+}
+.reviews-container .review-user .review-movie img {
+  width: 100%;
+  height: 200px;
+  border-radius: 24px;
+  object-fit: cover;
+  display: block;
+  border-image: fill;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+.reviews-container .review-user .review-movie .movie-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: left;
+  transition: background 0.3s ease;
+}
+.reviews-container .review-user .review-movie .movie-info p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+}
+.reviews-container .review-user .review-movie:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+.reviews-container .review-content {
+  flex: 2;
+  background-color: #12200A;
+  border-radius: 24px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.reviews-container .review-content p {
+  margin: 0;
   font-size: 16px;
   color: #EBE9E7;
 }
 
-.user-info p {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 6px;
-  color: #EBE9E7;
-  text-align:left;
-}
-
-/* Estilo de grilla de reseñas para mobile */
 @media (max-width: 768px) {
-  .review {
-      grid-template-columns: 1fr;
+  .reviews-container {
+    flex-direction: column;
   }
-
+  .reviews-container .reviews-container2 {
+    flex-direction: column;
+    margin-bottom: 5px;
+    align-items: center;
+  }
+  .reviews-container .reviews-container2 .review {
+    flex-direction: column;
+    align-items: center;
+  }
+  .reviews-container .reviews-container2 .review .review-user {
+    width: 100%;
+  }
+  .reviews-container .reviews-container2 .review-content {
+    width: 100%;
+  }
 }
-
-/* Reloj selector de tiempo */
-.timer { /* Va a quedar mucho más estético para las próximas entregas */
+.timer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
 .container-reloj {
@@ -396,30 +427,27 @@ main p {
   padding: 20px;
   margin: 10px 5px;
 }
-
-.time {
+.time-section .time, .time-section .label, .time-section .colon {
+  color: #ffffff;
+}
+.time-section .time {
   font-size: 70px;
-  color: #ffffff;
 }
-
-.label {
+.time-section .label, .time-section .colon {
   font-size: 20px;
-  color: #ffffff;
 }
-
-.colon {
+.time-section .colon {
   font-size: 36px;
-  color: #ffffff;
 }
 
 .filters {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
   margin-bottom: 20px;
 }
-
-.form-select {
+.filters .form-select {
   width: 80%;
   padding: 10px;
   margin: 10px 0;
@@ -443,21 +471,19 @@ main p {
   margin: 10px 10px 10px 10px;
 }
 
-/* Estilo del footer */
 footer {
-  background-color: #101906 (0, 0, 0, 0.5);
   text-align: center;
   padding: 10px 0;
   z-index: 1;
   padding-top: 20%;
 }
-
 footer p {
   color: #EBE9E7;
 }
-
 @media only screen and (max-width: 500px) {
   footer p {
     display: none;
   }
-  }
+}
+
+/*# sourceMappingURL=style.css.map */
