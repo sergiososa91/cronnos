@@ -1,5 +1,6 @@
 // Variables para colores y fuentes
-$background-color: #101906;
+$background-color: #333333;
+$second-background-color: #1E1E1E;
 $text-color: #101906;
 $mobile-background-color: #040601;
 $text-color-light: #EBE9E7;
@@ -11,6 +12,7 @@ $font-family: "Nunito Sans", sans-serif;
 $main-padding: 10px 20px;
 $border-radius: 24px;
 $box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+$icon-size: 30px;
 
 // Variable para el breakpoint
 $mobile-breakpoint: 768px;
@@ -51,8 +53,7 @@ $small-screen: 500px;
 
 // Estilos globales
 body {
-  background-color: $background-color;
-  background: url('../img/Background.png') no-repeat center center fixed;
+  background-color: $mobile-background-color;
   background-size: cover;
   position: absolute;
   color: $text-color;
@@ -72,7 +73,6 @@ body {
 
 .background-overlay {
   position: absolute;
-  background: url('../img/Background.png') no-repeat center center fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -97,7 +97,7 @@ header {
   @include flex-center;
   justify-content: space-between;
   padding: $main-padding;
-  background-color: $background-color;
+  background-color: $highlight-color;
   border-radius: $border-radius;
   margin: 10px;
   z-index: 1;
@@ -115,14 +115,19 @@ header {
 
         a {
           text-decoration: none;
-          color: $highlight-color;
+          color: $background-color;
           font-size: 18px;
+
+          @media only screen and (max-width: $small-screen) {
+            color: $highlight-color;
+          }
 
           &:hover {
             text-decoration: underline;
-            color: $highlight-color;
+            color: $mobile-background-color;
           }
         }
+      }
       }
     }
 
@@ -130,10 +135,50 @@ header {
       font-weight: bolder;
       color: $highlight-color;
     }
+
+  .search {
+  color: $highlight-color;
+  
+  @media only screen and (max-width: $mobile-breakpoint) {
+  display: none;
+   }
   }
 
-  .logo img {
+  @media only screen and (max-width: $small-screen) {
+    border-radius: 0%;
+    padding: 0%;
+    margin: 0%;
+    position: fixed;
+    width: 100%;
+    top:0;
+  }
+}
+
+
+.logo img {
     height: 50px;
+}
+
+.logo {
+  @media only screen and (max-width: $small-screen) {
+    display: none;
+}
+}
+
+// No se cómo hacer para que el título de la página, el active-page, se centre en mobile; lo resolví agregando margin
+.active-page { 
+  @include flex-center;
+  color: $text-color-light;
+  font-size: 22px;
+  font-weight: bolder;
+  text-align: center;
+  margin-top: 15px;
+  margin-left: 150px;
+  z-index: 1;
+  flex-grow: 1;
+
+  @media only screen and (min-width: $mobile-breakpoint) {
+    display: none;
   }
 }
 
@@ -190,6 +235,9 @@ main {
   }
 
   @media only screen and (max-width: $small-screen) {
+    margin-top: 100px;
+    margin-bottom: 60px;
+    
     h1, h2, .page-description {
       display: none;
     }
@@ -197,11 +245,112 @@ main {
 }
 
 // Estilos de contenedores de secciones
+
+.highlight{
+  position: relative;
+  max-width: 95%;
+  margin: 0 auto;
+  padding: 20px;
+
+  img{
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    border-image: fill;
+    filter: brightness(50%);
+    z-index: 1;
+  }
+
+  @media only screen and (max-width: $small-screen) {
+    img {
+        display: none;
+    }
+  }
+  
+  h1, h2, .page-description {
+    position: absolute;
+    z-index: 2;
+    color: $text-color-light;
+    margin: 0 auto;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  h1 {
+    top: 20%;
+    font-size: 4em;
+    font-weight: bolder;
+  }
+
+  h2 {
+    top: 40%;
+    font-size: 2em;
+  }
+
+  .page-description {
+    top: 60%;
+    width: 80%;
+    font-size: 1.2em;
+  }
+}
+
+.carousel-inner {
+  max-width: 95%;
+  margin: 0 auto;
+  padding: 20px;
+
+  p{
+    font-size: 20px;
+    text-align: left;
+    color: $text-color-light;
+    font-weight: bold;
+  }
+
+ .title-incoming{
+  font-size: 30px;
+  text-align: left;
+  color: $text-color-light;
+  font-weight: bolder;
+ }
+
+ @media (max-width: $mobile-breakpoint) {
+  width: 100%;
+  height: 300px;
+
+  p{
+    font-size: 20px;
+    text-align: left;
+    color: $text-color-light;
+    font-weight: bold;
+  }
+  .title-incoming{
+    font-size: 30px;
+    text-align: left;
+    color: $text-color-light;
+    font-weight: bolder;
+  }
+}
+}
+
+
+.carousel-item img {
+  height: 400px;
+  width: auto;
+  overflow-x: none;
+  object-fit: cover;
+  display: block;
+  border-image: fill;
+  box-sizing: border-box;
+  }
+
+
 .container {
   max-width: 95%;
   margin: 0 auto;
   padding: 0 10px;
-  background-color: $background-color;
+  background-color: $mobile-background-color;
   border-radius: $border-radius;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -255,7 +404,7 @@ main {
     .movie-length {
       font-size: 14px;
       font-weight: bolder;
-      color: $highlight-color;
+      color: $text-color-light;
     }
   }
 
@@ -266,6 +415,46 @@ main {
 
   @media (max-width: $mobile-breakpoint) {
     @include responsive-card(2);
+  }
+}
+
+.movie-detail-card {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  border-radius: 15px 15px 0 0;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.5);
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 100;
+  
+  &.hidden {
+    transform: translateY(100%);
+  }
+
+  &.visible {
+    transform: translateY(0);
+  }
+
+  img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 10px;
+  }
+
+  .movie-detail-info {
+    h2 {
+      margin: 0 0 10px 0;
+      font-size: 24px;
+    }
+
+    p {
+      margin: 5px 0;
+    }
   }
 }
 
@@ -282,6 +471,7 @@ main {
 .profile img {
   width: 200px;
   height: 200px;
+  padding: 10px;
   border-radius: $border-radius;
 }
 
@@ -326,11 +516,14 @@ main {
       display: block;
       border-image: fill;
       @include box-shadow;
+      filter: grayscale(0%);
+      transition: filter 0.5s ease; 
     }
 
     &:hover {
-    transform: scale(1.05);
-    @include box-shadow;
+      filter: grayscale(100%);
+      transform: scale(1.05);
+      @include box-shadow;
     }
   }
 }
@@ -363,7 +556,7 @@ main {
   flex-direction: column;
   align-items: stretch;
   padding: 15px;
-  background-color: $background-color;
+  background-color: $second-background-color;
   border-radius: $border-radius;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
@@ -371,7 +564,7 @@ main {
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: $background-color;
+  background-color: $second-background-color;
 }
 
 .review{
@@ -380,14 +573,14 @@ main {
   display: flex;
   flex-direction: row;
   gap: 20px;
-  background-color: $text-color;
+  background-color: $second-background-color;
   border-radius: $border-radius;
   padding: 10px;
 }
 
 .review-user{
   flex: 1;
-  background-color: #12200A;
+  background-color: $background-color;
   border-radius: $border-radius;
   padding: 10px;
   display: flex;
@@ -445,7 +638,7 @@ main {
 
 .review-content{
   flex: 2;
-  background-color: #12200A;
+  background-color: $background-color;
   border-radius: $border-radius;
   padding: 20px;
   box-sizing: border-box;
@@ -503,7 +696,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #151f0a;
+  background-color: $second-background-color;
   border-radius: 36px;
   padding: 20px;
   margin: 10px 5px;
@@ -536,7 +729,7 @@ main {
     margin: 10px 0;
     border-radius: 6px;
     border: 2px solid $highlight-color;
-    background-color: $background-color;
+    background-color: $second-background-color;
     color: #ffffff;
     cursor: pointer;
     font-size: 16px;
@@ -555,12 +748,51 @@ main {
     margin: 10px 10px 10px 10px;
   }
 
+.topbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: $main-padding;
+  background-color: $second-background-color;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+ 
+  .topbar-icon {
+    background-color: $second-background-color;
+    border: none;
+    cursor: pointer;
+
+    .active-icon {
+      background-color: $highlight-color;
+    }
+  }
+
+  // Estilos para cada ícono
+  .icon {
+  position: relative;
+  
+  img {
+  width: $icon-size;
+  height: $icon-size;
+  }
+
+  &:hover{
+    color: $highlight-color;
+  }
+  }
+
+  @media only screen and (min-width: $mobile-breakpoint) {
+    display: none
+  }
+}
+
 // Estilo del footer
 footer {
   text-align: center;
   padding: 10px 0;
   z-index: 1;
-  padding-top: 20%;
+  padding-top: 5%;
 
   p {
     color: $text-color-light;

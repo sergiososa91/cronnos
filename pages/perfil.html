@@ -24,31 +24,46 @@
     </div>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link actual-page" aria-current="page" href="perfil.html">Perfil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="filtros.html">Filtros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="amigos.html">Amigos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="calendario.html">Calendario</a>
-                    </li>
-                </ul>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="active-page"><p>Perfil</p></div>
+
+          <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <p class="offcanvas-title" id="offcanvasNavbarLabel">CRONNOS</p>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link actual-page" aria-current="page" href="perfil.html">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="filtros.html">Filtros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="amigos.html">Amigos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="calendario.html">Calendario</a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-    </nav>
-</header>
+        <div class="search">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+            </div>
+      </nav>
+  </header>
     
 <main>
     <!--Datos de Usuario -->
@@ -173,6 +188,35 @@
             </div>
         </section>
     </main>
+
+    <!-- Topbar -->
+    <div class="topbar">
+        <button class="topbar-icon" onclick="window.location.href='../index.html'">
+        <div class="icon">
+            <img src="../img/ui home.svg" alt="Home">
+        </div>
+        </button>
+        <button class="topbar-icon active-icon" >
+        <div class="icon">
+            <img src="../img/ui perfil.svg" alt="perfil">
+        </div>
+        </button>
+        <button class="topbar-icon" onclick="window.location.href='filtros.html'">
+        <div class="icon">
+            <img src="../img/ui filtros.svg" alt="filtros">
+        </div>
+        </button>
+        <button class="topbar-icon" onclick="window.location.href='amigos.html'">
+        <div class="icon">
+            <img src="../img/ui amigos.svg" alt="amigos">
+        </div>
+        </button>
+        <button class="topbar-icon" onclick="window.location.href='calendario.html'">
+        <div class="icon">
+            <img src="../img/ui calendario.svg" alt="calendario">
+        </div>
+        </button>
+    </div>
     
     <footer>
         <p>Todos los derechos reservados</p> 

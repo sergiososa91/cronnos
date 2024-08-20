@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
     <!-- Enlace a la hoja de estilos CSS de Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,39 +23,57 @@
     </div>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link actual-page" aria-current="page" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/perfil.html">Perfil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/filtros.html">Filtros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/amigos.html">Amigos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/calendario.html">Calendario</a>
-                    </li>
-                </ul>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="active-page"><p>Home</p></div>
+
+          <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <p class="offcanvas-title" id="offcanvasNavbarLabel">CRONNOS</p>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                    <a class="nav-link actual-page" aria-current="page" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/perfil.html">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/filtros.html">Filtros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/amigos.html">Amigos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pages/calendario.html">Calendario</a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-    </nav>
+        <div class="search">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+            </div>
+      </nav>
   </header>
 
 <!-- Contenido del Home -->
     <main>
+        <div class="highlight">
+            <img src="img/europa.png" alt="cronnos">
         <h1 class="index-title"> CRONNOS </h1>
         <h2> Descubrí el cine perfecto para tu tiempo disponible </h2>
         <p class="page-description"> 
             Cronnos es la plataforma definitiva para los amantes del cine que buscan recomendaciones personalizadas basadas en su tiempo disponible. ¿Tenés sólo 30 minutos? ¿O quizás una tarde entera? Con Cronnos, siempre vas a encontrar la película perfecta para ver sin importar cuánto tiempo tengas.
         </p>
+        </div>
     
     <!-- Reloj temporizador para iniciar recomendación de películas -->
     <section class="section-title">
@@ -76,7 +94,10 @@
         </div>
             <button class="start-button">Iniciar</button>
 
+
+            
     <!-- Carruseles con estrenos semanales, tendencias y Watchlist del usuario -->
+   
     <section class="section-title">
         <p>Estrenos Semanales</p>
     </section>
@@ -208,9 +229,81 @@
     </div>
 </section>
 
+<section class="section-title">
+    <p>Próximos Estrenos</p>
+</section>
+<div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/maxxxine.webp" class="d-block w-100" alt="maxxxine">
+        <div class="carousel-caption d-none d-md-block">
+          <div class="title-incoming">MAXXXINE (2024)</div>
+          <p>Estreno 5 de agosto.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/longlegs.jpg" class="d-block w-100" alt="longlegs">
+        <div class="carousel-caption d-none d-md-block">
+          <div class="title-incoming">LONGLEGS (2024)</div>
+          <p>Estreno 18 de septiembre.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/thecrow.jpg" class="d-block w-100" alt="thecrow">
+        <div class="carousel-caption d-none d-md-block">
+          <div class="title-incoming">THE CROW (2024)</div>
+          <p>Estreno 5 de diciembre.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
 <div class="background-overlay"></div>
 
 </main>
+
+
+<!-- Topbar -->
+<div class="topbar">
+    <button class="topbar-icon active-icon">
+    <div class="icon">
+        <img src="img/ui home.svg" alt="Home">
+    </div>
+    </button>
+    <button class="topbar-icon" onclick="window.location.href='pages/perfil.html'">
+    <div class="icon">
+        <img src="img/ui perfil.svg" alt="perfil">
+    </div>
+    </button>
+    <button class="topbar-icon" onclick="window.location.href='pages/filtros.html'">
+    <div class="icon">
+        <img src="img/ui filtros.svg" alt="filtros">
+    </div>
+    </button>
+    <button class="topbar-icon" onclick="window.location.href='pages/amigos.html'">
+    <div class="icon">
+        <img src="img/ui amigos.svg" alt="amigos">
+    </div>
+    </button>
+    <button class="topbar-icon" onclick="window.location.href='pages/calendario.html'">
+    <div class="icon">
+        <img src="img/ui calendario.svg" alt="calendario">
+    </div>
+    </button>
+</div>
 
 <!-- Pie de página -->
 <footer>
