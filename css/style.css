@@ -115,14 +115,37 @@ header .search {
   color: #EBE9E7;
   font-size: 22px;
   font-weight: bolder;
-  text-align: center;
-  margin-top: 15px;
-  margin-left: 150px;
+  justify-content: space-around;
+  align-items: center;
   z-index: 1;
   flex-grow: 1;
 }
 @media only screen and (min-width: 768px) {
   .active-page {
+    display: none;
+  }
+}
+
+.navbar-icon {
+  background-color: #F2AA42;
+  border: none;
+  cursor: pointer;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 20px;
+}
+.navbar-icon .icon {
+  position: relative;
+}
+.navbar-icon .icon img {
+  width: 30px;
+  height: 30px;
+}
+.navbar-icon .icon:hover {
+  color: #F2AA42;
+}
+@media only screen and (min-width: 768px) {
+  .navbar-icon {
     display: none;
   }
 }
@@ -278,20 +301,60 @@ main .index-title {
   flex-wrap: wrap;
   justify-content: flex-start;
 }
+.container .carousel-btn {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.container .carousel-btn.prev-btn {
+  left: -20px;
+}
+.container .carousel-btn.next-btn {
+  right: -20px;
+}
+.container .carousel-btn:hover {
+  background-color: #F2AA42;
+}
+@media (max-width: 768px) {
+  .container .carousel-btn {
+    width: 30px;
+    height: 30px;
+    left: 0;
+    right: 0;
+  }
+}
 
 .movies {
   max-width: 95%;
   margin: 0 auto;
 }
 
-.movie-carousel {
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+.carousel-container .movie-carousel {
   display: flex;
   overflow-x: auto;
+  transition: transform 0.5s ease;
   gap: 20px;
   padding: 15px 10px 15px 10px;
 }
-
-.movie {
+.carousel-container .movie {
+  scroll-snap-align: start;
+  flex: 0 0 25%;
+  width: 300px;
   flex: 0 0 calc(33.3333333333% - 33px);
   max-width: calc(33.3333333333% - 33px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -299,7 +362,7 @@ main .index-title {
   overflow: hidden;
   position: relative;
 }
-.movie img {
+.carousel-container .movie img {
   width: 100%;
   height: 200px;
   border-radius: 24px;
@@ -308,7 +371,7 @@ main .index-title {
   border-image: fill;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
-.movie .movie-info {
+.carousel-container .movie .movie-info {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -319,23 +382,23 @@ main .index-title {
   text-align: left;
   transition: background 0.3s ease;
 }
-.movie .movie-info p {
+.carousel-container .movie .movie-info p {
   margin: 0;
   font-size: 18px;
   font-weight: bold;
   text-align: left;
 }
-.movie .movie-info .movie-length {
+.carousel-container .movie .movie-info .movie-length {
   font-size: 14px;
   font-weight: bolder;
   color: #EBE9E7;
 }
-.movie:hover {
+.carousel-container .movie:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 @media (max-width: 768px) {
-  .movie {
+  .carousel-container .movie {
     flex: 0 0 calc(50% - 33px);
     max-width: calc(50% - 33px);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -379,7 +442,6 @@ main .index-title {
 
 .section-title p {
   font-size: 20px;
-  margin-top: 20px;
   margin-bottom: 5px;
   color: #EBE9E7;
   font-weight: bold;
@@ -579,13 +641,6 @@ main .index-title {
     width: 100%;
   }
 }
-.timer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0;
-}
-
 .container-reloj {
   max-width: 80%;
   margin: 0 auto;
@@ -593,10 +648,21 @@ main .index-title {
   background-color: #333333;
   border-radius: 24px;
   flex-wrap: wrap;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
   justify-content: flex-start;
 }
-
-.time-section {
+.container-reloj .timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 20px;
+}
+.container-reloj .colon {
+  font-size: 70px;
+  color: #ffffff;
+}
+.container-reloj .time-section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -605,17 +671,39 @@ main .index-title {
   padding: 20px;
   margin: 10px 5px;
 }
-.time-section .time, .time-section .label, .time-section .colon {
-  color: #ffffff;
+.container-reloj .time-section .time-input, .container-reloj .time-section .label {
+  color: #EBE9E7;
 }
-.time-section .time {
-  font-size: 70px;
+.container-reloj .time-section .time-input {
+  appearance: textfield;
+  font-size: 60px;
+  width: 80px;
+  background-color: transparent;
+  border: none;
+  color: #EBE9E7;
+  text-align: center;
+  outline: none;
 }
-.time-section .label, .time-section .colon {
+.container-reloj .time-section .time-input::placeholder {
+  color: #888888;
+}
+.container-reloj .time-section .time-input:focus {
+  border-bottom: 2px solid #F2AA42;
+}
+.container-reloj .time-section .time-input::-webkit-inner-spin-button, .container-reloj .time-section .time-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.container-reloj .time-section .label {
   font-size: 20px;
 }
-.time-section .colon {
-  font-size: 36px;
+
+.play {
+  border-radius: 36px;
+  background-color: #F2AA42;
+  border: none;
+  width: 50px;
+  height: 50px;
 }
 
 .filters {
@@ -647,6 +735,9 @@ main .index-title {
   font-size: 24px;
   cursor: pointer;
   margin: 10px 10px 10px 10px;
+}
+.start-button:hover {
+  background-color: #ef9512;
 }
 
 .topbar {

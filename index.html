@@ -12,7 +12,19 @@
 
     <!-- Enlace a CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <title> CRONNOS </title>
+
+    <!-- Meta para SEO -->
+    <meta name="description" content="Descubrí qué ver con Cronnos, la plataforma cinéfila que te recomienda películas según el tiempo que tengas, tus géneros favoritos y en qué momento estés. Enterate de los próximos estrenos y festivales, conectate con tus amigos y compartí tus intereses, todo en un sólo lugar. Con Cronnos, siempre vas a encontrar la película perfecta para ver de acuerdo a tu agenda">
+    <meta name="keywords" content="cine, cinefilia, cronnos, cronnos peliculas, estrenos de cine, festivales de cine, estrenos, agenda de cine, entradas cine, cine en casa, noche de peliculas, streaming, recomendaciones de peliculas, recomendaciones de cine, peliculas segun genero, peliculas recomendadas, intereses de peliculas, festivales recomendados, cronometro, temporizador">
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CRONNOS | Home">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="Cronnos, la plataforma cinéfila que te recomienda películas según el tiempo que tengas, tus géneros favoritos y en qué momento estés.">
+
+    <title> CRONNOS | Home </title>
 </head>
 <body>
 
@@ -26,8 +38,6 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-
-          <div class="active-page"><p>Home</p></div>
 
           <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
@@ -60,8 +70,17 @@
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
               </form>
-            </div>
+        </div>
       </nav>
+
+      <div class="active-page"><p>Home</p></div>
+
+      <button class="navbar-icon" onclick="window.location.href='search'">
+        <div class="icon">
+            <img src="img/ui buscar.svg" alt="busqueda">
+        </div>
+        </button>
+
   </header>
 
 <!-- Contenido del Home -->
@@ -82,17 +101,20 @@
         <div class="container-reloj">
             <div class="timer">
                 <div class="time-section">
-                    <span class="time">00</span>
+                    <input type="number" class="time-input" placeholder="00" aria-label="Horas" min="0" max="99">
                     <span class="label">Horas</span>
                 </div>
                     <span class="colon">:</span>
                 <div class="time-section">
-                    <span class="time">00</span>
+                    <input type="number" class="time-input" placeholder="00" aria-label="Minutos" min="0" max="59">
                     <span class="label">Minutos</span>
                 </div>
+                <button class="start-button"">
+                    <img src="img/ui play.svg" alt="iniciar">
+                </button>
             </div>
         </div>
-            <button class="start-button">Iniciar</button>
+
 
 
             
@@ -102,27 +124,27 @@
         <p>Estrenos Semanales</p>
     </section>
     <section class="movies">
-          <div class="container">
+          <div class="carousel-container">
              <div class="movie-carousel">
                 <div class="movie">
-                    <img src="img/Inside Out 2.webp" alt="insideout2">
+                    <img src="img/kindofkindness.webp" alt="kindofkindness">
                     <div class="movie-info">
-                        <p>Inside Out 2</p>
-                        <p class="movie-length">1h 36m</p>
+                        <p>Kind Of Kindnes</p>
+                        <p class="movie-length">2h 45m</p>
                         </div>
                 </div>
                 <div class="movie">
-                    <img src="img/Juniper.webp" alt="juniper">
+                    <img src="img/lasustancia.jpg" alt="lasustancia">
                     <div class="movie-info">
-                        <p>Juniper</p>
-                        <p class="movie-length">1h 34m</p>
+                        <p>La Sustancia</p>
+                        <p class="movie-length">2h 21m</p>
                     </div>
                 </div>
                 <div class="movie">
-                    <img src="img/La Ruptura.jpg" alt="laruptura">
+                    <img src="img/alienromulus.jpg" alt="alienromulus">
                     <div class="movie-info">
-                        <p>La Ruptura</p>
-                        <p class="movie-length">1h 18m</p>
+                        <p>Alien: Romulus</p>
+                        <p class="movie-length">1h 59m</p>
                     </div>
                 </div>
                 <div class="movie">
@@ -140,7 +162,7 @@
         <p>Tendencias</p>
     </section>
     <section class="movies">
-    <div class="container"> 
+    <div class="carousel-container"> 
         <div class="movie-carousel">
             <div class="movie">
                 <img src="img/Inside Out 2.webp" alt="insideout2">
@@ -171,7 +193,7 @@
     <p>Vistas Por Amigos</p>
 </section>
 <section class="movies">
-    <div class="container">
+    <div class="carousel-container">
         <div class="movie-carousel">
             <div class="movie">
                 <img src="img/Breakfast Club.jpg" alt="breakfastclub">
@@ -202,7 +224,7 @@
     <p>Por Ver</p>
 </section>
 <section class="movies">
-    <div class="container">
+    <div class="carousel-container">
         <div class="movie-carousel">
             <div class="movie">
                 <img src="img/Rosemarys Baby.jpg" alt="rosemarysbaby">
@@ -225,6 +247,13 @@
                     <p class="movie-length">1h 37m</p>
                 </div>
             </div>
+            <div class="movie">
+                <img src="img/blondi.jpg" alt="blondi">
+                <div class="movie-info">
+                    <p>Blondi</p>
+                    <p class="movie-length">1h 28m</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -241,21 +270,21 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="img/maxxxine.webp" class="d-block w-100" alt="maxxxine">
-        <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-caption">
           <div class="title-incoming">MAXXXINE (2024)</div>
-          <p>Estreno 5 de agosto.</p>
+          <p>Estreno 1 de agosto.</p>
         </div>
       </div>
       <div class="carousel-item">
         <img src="img/longlegs.jpg" class="d-block w-100" alt="longlegs">
-        <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-caption">
           <div class="title-incoming">LONGLEGS (2024)</div>
           <p>Estreno 18 de septiembre.</p>
         </div>
       </div>
       <div class="carousel-item">
         <img src="img/thecrow.jpg" class="d-block w-100" alt="thecrow">
-        <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-caption">
           <div class="title-incoming">THE CROW (2024)</div>
           <p>Estreno 5 de diciembre.</p>
         </div>

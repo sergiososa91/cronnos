@@ -12,7 +12,19 @@
 
     <!-- Enlace a CSS -->
     <link rel="stylesheet" href="../css/style.css">
-    <title> CRONNOS </title>
+
+    <!-- Meta para SEO -->
+    <meta name="description" content="¿Tenés sólo 30 minutos? ¿O quizás una tarde entera? Con Cronnos, siempre vas a encontrar la película perfecta para ver sin importar cuánto tiempo tengas. Descubrí qué ver según tus géneros favoritos y en qué momento estés.">
+    <meta name="keywords" content="cine, cinefilia, cronnos, cronnos peliculas, agenda de cine, noche de peliculas, streaming, recomendaciones de peliculas, recomendaciones de cine, peliculas segun genero, peliculas recomendadas, intereses de peliculas, cronometro, temporizador">
+    
+    <!-- OpenGraph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CRONNOS | Cronómetro">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="Con Cronnos, siempre vas a encontrar la película perfecta para ver sin importar cuánto tiempo tengas. Descubrí qué ver según tus géneros favoritos y en qué momento estés.">
+
+    <title> CRONNOS | Cronómetro </title>
 </head>
 
 <body>
@@ -27,8 +39,6 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="active-page"><p>Filtros</p></div>
 
         <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header">
@@ -63,24 +73,32 @@
             </form>
           </div>
     </nav>
+
+    <div class="active-page"><p>Filtros</p></div>
+
+    <button class="navbar-icon" onclick="window.location.href='search'">
+      <div class="icon">
+          <img src="../img/ui buscar.svg" alt="busqueda">
+      </div>
+      </button>
 </header>
 
     <!-- Reloj temporizador para iniciar recomendación de películas y dropdowns para elegir género favorito, mood y situación -->
 <main>
       <h1> ¿Cuánto tiempo tenés? </h1>
         <p class="page-description">Indicá cuánto tiempo tenés disponible, qué género preferís y te damos la recomendación que necesitás. También podes pedir una recomendación aleatoria las veces que quieras.</p>
-      <div class="container-reloj">
-        <div class="timer">
-            <div class="time-section">
-              <span class="time">00</span>
-              <span class="label">Horas</span>
-            </div>
-              <span class="colon">:</span>
-            <div class="time-section">
-              <span class="time">00</span>
-              <span class="label">Minutos</span>
-            </div>
-        </div>
+        <div class="container-reloj">
+          <div class="timer">
+              <div class="time-section">
+                  <input type="number" class="time-input" placeholder="00" aria-label="Horas" min="0" max="99">
+                  <span class="label">Horas</span>
+              </div>
+                  <span class="colon">:</span>
+              <div class="time-section">
+                  <input type="number" class="time-input" placeholder="00" aria-label="Minutos" min="0" max="59">
+                  <span class="label">Minutos</span>
+              </div>
+          </div>
       </div>
 
     <div class="filters">

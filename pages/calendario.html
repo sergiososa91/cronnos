@@ -12,7 +12,19 @@
 
     <!-- Enlace a CSS -->
     <link rel="stylesheet" href="../css/style.css">
-    <title> CRONNOS </title>
+
+    <!-- Meta para SEO -->
+    <meta name="description" content="Enterate de los próximos estrenos y festivales, con Cronnos, siempre vas a encontrar la película o el lugar perfecto para disfrutar del séptimo arte">
+    <meta name="keywords" content="cine, cinefilia, cronnos, cronnos peliculas, estrenos de cine, festivales de cine, estrenos, agenda de cine, entradas cine, cine en casa, noche de peliculas, streaming, recomendaciones de peliculas, recomendaciones de cine, peliculas segun genero, peliculas recomendadas, intereses de peliculas, festivales recomendados, peliculas favoritas, bafici, festival de cine aleman, festival de cannes, festival de mar del plata">
+    
+    <!-- OpenGraph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CRONNOS | Calendario">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="Con Cronnos, enterate de los próximos estrenos y festivales. Siempre vas a encontrar la película o el lugar perfecto para disfrutar del séptimo arte">
+
+    <title> CRONNOS | Calendario </title>
 </head>
 
 <body>
@@ -27,8 +39,6 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-  
-          <div class="active-page"><p>Calendario</p></div>
   
           <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
@@ -63,6 +73,15 @@
               </form>
             </div>
       </nav>
+
+      <div class="active-page"><p>Calendario</p></div>
+
+      <button class="navbar-icon" onclick="window.location.href='search'">
+        <div class="icon">
+            <img src="../img/ui buscar.svg" alt="busqueda">
+        </div>
+        </button>
+
   </header>
 
     <!--Carruseles con próximos festivales, festivales favoritos del usuario y próximos estrenos y estrenos favoritos del usuario-->
@@ -71,7 +90,7 @@
         <p>Próximos Festivales</p>
     </section> 
         <section class="movies">
-            <div class="container"> 
+            <div class="carousel-container"> 
                 <div class="movie-carousel">
                     <div class="movie">
                         <img src="../img/bafici.jpg" alt="bafici">
@@ -87,7 +106,7 @@
         <p>Mis Festivales</p>
     </section> 
         <section class="movies">
-            <div class="container"> 
+            <div class="carousel-container"> 
                 <div class="movie-carousel">
                     <div class="movie">
                         <img src="../img/Mar Del Plata.png" alt="mardel">
@@ -115,7 +134,7 @@
         <p>Próximos Estrenos</p>
     </section> 
         <section class="movies">
-            <div class="container">
+            <div class="carousel-container">
                 <div class="movie-carousel">
                     <div class="movie">
                         <img src="../img/A Quiet Place.webp" alt="aquietplacedayone">
@@ -125,9 +144,9 @@
                         </div>
                     </div>
                     <div class="movie">
-                        <img src="../img/Late Night With The Devil.jpg" alt="latenightwiththedevil">
+                        <img src="../img/titane.webp" alt="titane">
                         <div class="movie-info">
-                        <p>Late Night With The Devil</p>
+                        <p>Titane</p>
                         <p class="movie-length">Estreno: 11 de julio</p>
                         </div>
                     </div>
@@ -146,7 +165,7 @@
         <p>Mis Estrenos</p>
     </section> 
         <section class="movies">
-            <div class="container"> 
+            <div class="carousel-container"> 
                 <div class="movie-carousel">
                     <div class="movie">
                         <img src="../img/Deadpool Wolverine.webp" alt="deadpoolwolverine">
