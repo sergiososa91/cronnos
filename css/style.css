@@ -652,6 +652,11 @@ main .index-title {
   align-items: center;
   justify-content: flex-start;
 }
+@media only screen and (max-width: 500px) {
+  .container-reloj {
+    max-width: 95%;
+  }
+}
 .container-reloj .timer {
   display: flex;
   justify-content: center;

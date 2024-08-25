@@ -761,8 +761,8 @@ main {
   align-items: center;
   justify-content: flex-start;
 
-  @media only screen and (max-width: 95%){
-    
+  @media only screen and (max-width: $small-screen){
+    max-width: 95%;
   }
 
   .timer {
