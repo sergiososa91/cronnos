@@ -13,18 +13,8 @@
     <!-- Enlace a CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Meta para SEO -->
-    <meta name="description" content="Descubrí qué ver con Cronnos, la plataforma cinéfila que te recomienda películas según el tiempo que tengas, tus géneros favoritos y en qué momento estés. Enterate de los próximos estrenos y festivales, conectate con tus amigos y compartí tus intereses, todo en un sólo lugar. Con Cronnos, siempre vas a encontrar la película perfecta para ver de acuerdo a tu agenda">
-    <meta name="keywords" content="cine, cinefilia, cronnos, cronnos peliculas, estrenos de cine, festivales de cine, estrenos, agenda de cine, entradas cine, cine en casa, noche de peliculas, streaming, recomendaciones de peliculas, recomendaciones de cine, peliculas segun genero, peliculas recomendadas, intereses de peliculas, festivales recomendados, cronometro, temporizador">
-
-    <!-- OpenGraph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="CRONNOS | Home">
-    <meta property="og:url" content="https://sergiososa91.github.io/cronnos/">
-    <meta property="og:image" content="https://github.com/sergiososa91/cronnos/blob/master/img/logo.png">
-    <meta property="og:description" content="Cronnos, la plataforma cinéfila que te recomienda películas según el tiempo que tengas, tus géneros favoritos y en qué momento estés.">
-
     <title> CRONNOS | Home </title>
+    <script src="main.js"></script>
 </head>
 <body>
 
@@ -34,57 +24,23 @@
         <img src="img/logo.png" alt="logocronnos" class="d-inline-block align-text-top">
     </div>
     <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-              <p class="offcanvas-title" id="offcanvasNavbarLabel">CRONNOS</p>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item">
-                    <a class="nav-link actual-page" aria-current="page" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages/perfil.html">Perfil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages/filtros.html">Filtros</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages/amigos.html">Amigos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages/calendario.html">Calendario</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="search">
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-              </form>
+        <div class="container-fluid">            
         </div>
       </nav>
-
-      <div class="active-page"><p>Home</p></div>
-
-      <button class="navbar-icon" onclick="window.location.href='index.html'">
-        <div class="icon">
-            <img src="img/ui buscar.svg" alt="busqueda">
-        </div>
-        </button>
-
   </header>
+
 
 <!-- Contenido del Home -->
     <main>
+
+        <div class="search">
+            <form class="d-flex" role="search">
+                <input id="search-input" class="form-control me-2" type="search" placeholder="Buscar película..." aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+            <div id="search-results"></div>
+        </div>
+
         <div class="highlight">
             <img src="img/europa.png" alt="cronnos">
         <h1 class="index-title"> CRONNOS </h1>
@@ -101,7 +57,7 @@
         <div class="container-reloj">
             <div class="timer">
                 <div class="time-section">
-                    <input type="number" class="time-input" placeholder="00" aria-label="Horas" min="0" max="99">
+                    <input type="number" class="time-input" placeholder="00" aria-label="Horas" min="0" max="5">
                     <span class="label">Horas</span>
                 </div>
                     <span class="colon">:</span>
@@ -109,230 +65,48 @@
                     <input type="number" class="time-input" placeholder="00" aria-label="Minutos" min="0" max="59">
                     <span class="label">Minutos</span>
                 </div>
-                <button class="start-button"">
+                
+                <button class="start-button">
                     <img src="img/ui play.svg" alt="iniciar">
                 </button>
+                
             </div>
-        </div>
 
-
-
+            <div class="genre-container">
+                <label for="genre-select">Selecciona el género:</label>
+                <select id="genre-select">
+                    <option value="terror">Terror</option>
+                    <option value="comedia">Comedia</option>
+                    <option value="accion">Acción</option>
+                    <option value="drama">Drama</option>
+                    <option value="thriller">Thriller</option>
+                    <option value="animacion">Animación</option>
+                </select>
+            </div>
             
-    <!-- Carruseles con estrenos semanales, tendencias y Watchlist del usuario -->
-   
-    <section class="section-title">
-        <p>Estrenos Semanales</p>
-    </section>
-    <section class="movies">
-          <div class="carousel-container">
-             <div class="movie-carousel">
-                <div class="movie">
-                    <img src="img/kindofkindness.webp" alt="kindofkindness">
-                    <div class="movie-info">
-                        <p>Kind Of Kindnes</p>
-                        <p class="movie-length">2h 45m</p>
-                        </div>
-                </div>
-                <div class="movie">
-                    <img src="img/lasustancia.jpg" alt="lasustancia">
-                    <div class="movie-info">
-                        <p>La Sustancia</p>
-                        <p class="movie-length">2h 21m</p>
-                    </div>
-                </div>
-                <div class="movie">
-                    <img src="img/alienromulus.jpg" alt="alienromulus">
-                    <div class="movie-info">
-                        <p>Alien: Romulus</p>
-                        <p class="movie-length">1h 59m</p>
-                    </div>
-                </div>
-                <div class="movie">
-                    <img src="img/Late Night With The Devil.jpg" alt="latenight">
-                    <div class="movie-info">
-                        <p>Late Night With The Devil</p>
-                        <p class="movie-length">1h 29m</p>
-                    </div>
-                </div>
-            </div>
         </div>
-    </section>
 
-    <section class="section-title">
-        <p>Tendencias</p>
-    </section>
-    <section class="movies">
-    <div class="carousel-container"> 
-        <div class="movie-carousel">
-            <div class="movie">
-                <img src="img/Inside Out 2.webp" alt="insideout2">
-                <div class="movie-info">
-                    <p>Inside Out 2</p>
-                    <p class="movie-length">1h 36m</p>
-                </div>
-            </div>
-            <div class="movie">
-                <img src="img/Hit Man.webp" alt="hitman">
-                <div class="movie-info">
-                    <p>Hit Man</p>
-                    <p class="movie-length">1h 55m</p>
-                </div>
-            </div>
-            <div class="movie">
-                <img src="img/Poor Things.jpg" alt="poorthings">
-                <div class="movie-info">
-                    <p>Poor Things</p>
-                    <p class="movie-length">2h 21m</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section class="section-title">
-    <p>Vistas Por Amigos</p>
-</section>
-<section class="movies">
-    <div class="carousel-container">
-        <div class="movie-carousel">
-            <div class="movie">
-                <img src="img/Breakfast Club.jpg" alt="breakfastclub">
-                <div class="movie-info">
-                    <p>The Breakfast Club</p>
-                    <p class="movie-length">1h 37m</p>
-                </div>
-            </div>
-            <div class="movie">
-                <img src="img/May December.webp" alt="maydecember">
-                <div class="movie-info">
-                    <p>May December</p>
-                    <p class="movie-length">1h 57m</p>
-                </div>
-            </div>
-            <div class="movie">
-                <img src="img/Todo sobre Mi Madre.webp" alt="todosobre">
-                <div class="movie-info">
-                    <p>Todo Sobre Mi Madre</p>
-                    <p class="movie-length">1h 41m</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section class="section-title">
-    <p>Por Ver</p>
-</section>
-<section class="movies">
-    <div class="carousel-container">
-        <div class="movie-carousel">
-            <div class="movie">
-                <img src="img/Rosemarys Baby.jpg" alt="rosemarysbaby">
-                <div class="movie-info">
-                    <p>Rosemarys Baby</p>
-                    <p class="movie-length">2h 16m</p>
-                </div>
-            </div>
-            <div class="movie">
-                <img src="img/Inside Out 2.webp" alt="insideout2">
-                <div class="movie-info">
-                    <p>Inside Out 2</p>
-                    <p class="movie-length">1h 36m</p>
-                </div>
-            </div>
-            <div class="movie">
-                <img src="img/Breakfast Club.jpg" alt="breakfastclub">
-                <div class="movie-info">
-                    <p>The Breakfast Club</p>
-                    <p class="movie-length">1h 37m</p>
-                </div>
-            </div>
-            <div class="movie">
-                <img src="img/blondi.jpg" alt="blondi">
-                <div class="movie-info">
-                    <p>Blondi</p>
-                    <p class="movie-length">1h 28m</p>
-                </div>
-            </div>
-        </div>
+   <!-- Recomendación pop-up -->
+<div id="recommendation-popup" class="popup">
+    <div class="popup-content">
+        <span id="close-popup" class="close">&times;</span>
+        <p id="recommendation-text"></p>
     </div>
-</section>
+</div>
 
-<section class="section-title">
-    <p>Próximos Estrenos</p>
-</section>
-<div id="carouselExampleCaptions" class="carousel slide">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<!-- Pop-up de error -->
+<div id="error-popup" class="popup">
+    <div class="popup-content">
+        <span id="close-error-popup" class="close">&times;</span>
+        <p id="error-text"></p>
     </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="img/maxxxine.webp" class="d-block w-100" alt="maxxxine">
-        <div class="carousel-caption">
-          <div class="title-incoming">MAXXXINE (2024)</div>
-          <p>Estreno 1 de agosto.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="img/longlegs.jpg" class="d-block w-100" alt="longlegs">
-        <div class="carousel-caption">
-          <div class="title-incoming">LONGLEGS (2024)</div>
-          <p>Estreno 18 de septiembre.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="img/thecrow.jpg" class="d-block w-100" alt="thecrow">
-        <div class="carousel-caption">
-          <div class="title-incoming">THE CROW (2024)</div>
-          <p>Estreno 5 de diciembre.</p>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+</div>
 
 <div class="background-overlay"></div>
 
 </main>
-
-
-<!-- Topbar -->
-<div class="topbar">
-    <button class="topbar-icon active-icon">
-    <div class="icon">
-        <img src="img/ui home.svg" alt="Home">
-    </div>
-    </button>
-    <button class="topbar-icon" onclick="window.location.href='pages/perfil.html'">
-    <div class="icon">
-        <img src="img/ui perfil.svg" alt="perfil">
-    </div>
-    </button>
-    <button class="topbar-icon" onclick="window.location.href='pages/filtros.html'">
-    <div class="icon">
-        <img src="img/ui filtros.svg" alt="filtros">
-    </div>
-    </button>
-    <button class="topbar-icon" onclick="window.location.href='pages/amigos.html'">
-    <div class="icon">
-        <img src="img/ui amigos.svg" alt="amigos">
-    </div>
-    </button>
-    <button class="topbar-icon" onclick="window.location.href='pages/calendario.html'">
-    <div class="icon">
-        <img src="img/ui calendario.svg" alt="calendario">
-    </div>
-    </button>
-</div>
 
 <!-- Pie de página -->
 <footer>

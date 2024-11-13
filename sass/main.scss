@@ -29,27 +29,6 @@ $small-screen: 500px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-@mixin responsive-card($width) {
-  flex: 0 0 calc(100% / $width - 33px);
-  max-width: calc(100% / $width - 33px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: $border-radius;
-  overflow: hidden;
-}
-
-@mixin review-card($width) {
-  flex: 0 0 calc(100% / $width - 33px);
-  max-width: calc(100% / $width - 33px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: $border-radius;
-  overflow: hidden;
-}
-
-@mixin friend-card($width){
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: $border-radius;
-  overflow: hidden;
-}
 
 // Estilos globales
 body {
@@ -105,53 +84,12 @@ header {
   .navbar {
     list-style: none;
     display: flex;
-
-    ul {
-      list-style: none;
-      display: flex;
-
-      li {
-        margin: 0 10px;
-
-        a {
-          text-decoration: none;
-          color: $background-color;
-          font-size: 18px;
-
-          @media only screen and (max-width: $small-screen) {
-            color: $highlight-color;
-          }
-
-          &:hover {
-            text-decoration: underline;
-            color: $mobile-background-color;
-          }
-        }
-      }
-      }
     }
 
     .actual-page {
       font-weight: bolder;
       color: $highlight-color;
     }
-
-  .search {
-  color: $highlight-color;
-
-  @media only screen and (max-width: $mobile-breakpoint) {
-  display: none;
-   }
-  }
-
-  @media only screen and (max-width: $small-screen) {
-    border-radius: 0%;
-    padding: 0%;
-    margin: 0%;
-    position: fixed;
-    width: 100%;
-    top:0;
-  }
 }
 
 
@@ -164,47 +102,6 @@ header {
     display: none;
 }
 }
-
-.active-page {
-  @include flex-center;
-  color: $text-color-light;
-  font-size: 22px;
-  font-weight: bolder;
-  justify-content: space-around;
-  align-items: center;
-  z-index: 1;
-  flex-grow: 1;
-
-  @media only screen and (min-width: $mobile-breakpoint) {
-    display: none;
-  }
-}
-
-
-  .navbar-icon {
-    background-color: $highlight-color;
-    border: none;
-    cursor: pointer;
-    justify-content: space-around;
-    align-items: center;
-    padding: $main-padding;
-
-    .icon {
-      position: relative;
-    
-      img {
-      width: $icon-size;
-      height: $icon-size;
-      }
-    
-      &:hover{
-        color: $highlight-color;
-      }
-      }
-            @media only screen and (min-width: $mobile-breakpoint) {
-        display: none
-      }
-  }
 
 
 
@@ -322,449 +219,37 @@ main {
   }
 }
 
-.carousel-inner {
-  max-width: 95%;
-  margin: 0 auto;
-  padding: 20px;
-
-  p{
-    font-size: 20px;
-    text-align: left;
-    color: $text-color-light;
-    font-weight: bold;
-  }
-
- .title-incoming{
-  font-size: 30px;
-  text-align: left;
-  color: $text-color-light;
-  font-weight: bolder;
- }
-
- @media (max-width: $mobile-breakpoint) {
-  width: 100%;
-  height: 300px;
-
-  p{
-    font-size: 20px;
-    text-align: left;
-    color: $text-color-light;
-    font-weight: bold;
-  }
-  .title-incoming{
-    font-size: 30px;
-    text-align: left;
-    color: $text-color-light;
-    font-weight: bolder;
-  }
-}
-}
-
-
-.carousel-item img {
-  height: 400px;
-  width: auto;
-  overflow-x: none;
-  object-fit: cover;
-  display: block;
-  border-image: fill;
-  box-sizing: border-box;
-  }
-
-
-.container {
-  max-width: 95%;
-  margin: 0 auto;
-  padding: 0 10px;
-  background-color: $mobile-background-color;
-  border-radius: $border-radius;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-
-  .carousel-btn {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #ffffff;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 2;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    
-    &.prev-btn {
-      left: -20px;
-    }
-    
-    &.next-btn {
-      right: -20px;
-    }
-
-    &:hover {
-      background-color: $highlight-color;
-    }
-
-    @media (max-width: $mobile-breakpoint) {
-      width: 30px;
-      height: 30px;
-      left: 0;
-      right: 0;
-    }
-  }
-}
-
-
-
-// Estilos de secciones de películas e imágenes
-.movies {
-  max-width: 95%;
-  margin: 0 auto;
-}
-
-.carousel-container {
-  position: relative;
-  overflow: hidden;
-
-
-.movie-carousel {
-  display: flex;
-  overflow-x: auto;
-  transition: transform 0.5s ease;
-  gap: 20px;
-  padding: 15px 10px 15px 10px;
-
-  &::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  
-  &::-webkit-scrollbar-thumb {
-    background-color: $highlight-color ;
-    border-radius: $border-radius;
-    
-  }
-  
-  &::-webkit-scrollbar-track {
-    background-color: $second-background-color;
-    border-radius: $border-radius;
-  }
-}
-
-.movie {
-  scroll-snap-align: start;
-  flex: 0 0 25%;
-  width: 300px;
-  @include responsive-card(3);
-  position: relative;
-
-  img {
-    width: 100%;
-    height: 200px;
-    border-radius: $border-radius;
-    object-fit: cover;
-    display: block;
-    border-image: fill;
-    @include box-shadow;
-  }
-
-  .movie-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    box-sizing: border-box;
-    text-align: left;
-    transition: background 0.3s ease;
-
-    p {
-      margin: 0;
-      font-size: 18px;
-      font-weight: bold;
-      text-align: left;
-    }
-
-    .movie-length {
-      font-size: 14px;
-      font-weight: bolder;
-      color: $text-color-light;
-    }
-  }
-
-  &:hover {
-    transform: scale(1.05);
-    @include box-shadow;
-  }
-
-  @media (max-width: $mobile-breakpoint) {
-    @include responsive-card(2);
-  }
-}
-}
-
-.movie-detail-card {
+/* Popup oculto que aparece cuando se inicia la recomendación */
+.popup {
+  display: none; 
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
-  right: 0;
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-  border-radius: 15px 15px 0 0;
-  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.5);
-  transform: translateY(100%);
-  transition: transform 0.3s ease-in-out;
-  z-index: 100;
-
-  &.hidden {
-    transform: translateY(100%);
-  }
-
-  &.visible {
-    transform: translateY(0);
-  }
-
-  img {
-    width: 100%;
-    border-radius: 15px;
-    margin-bottom: 10px;
-  }
-
-  .movie-detail-info {
-    h2 {
-      margin: 0 0 10px 0;
-      font-size: 24px;
-    }
-
-    p {
-      margin: 5px 0;
-    }
-  }
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-// Estilos de secciones de amigos, avatares y textos
-.section-title p {
-  font-size: 20px;
-  margin-bottom: 5px;
-  margin-top: 16px;
-  color: $text-color-light;
-  font-weight: bold;
+.popup-content {
+  position: relative;
+  margin: 15% auto;
+  padding: 20px;
+  background-color: #F2AA42;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 8px;
   text-align: center;
 }
 
-.profile img {
-  width: 200px;
-  height: 200px;
-  padding: 10px;
-  border-radius: $border-radius;
-}
-
-.profile p {
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
   font-size: 24px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  color: $text-color-light;
-  font-weight: bolder;
-  text-align: center;
+  cursor: pointer;
 }
 
-.friends-container{
-  max-width: 100%;
-  display: flex;
-  overflow-x: auto;
-  flex-direction: row;
-  align-items: start;
-}
 
-.user-friend {
-  max-width: 95%;
-  margin: 10px;
-  display: flex;
-  flex-direction: row;
-  border-radius: $border-radius;
-  align-items: stretch;
-  justify-content: flex-start;
-
-  .avatar {
-    position: relative;
-    display: inline-block;
-    object-fit: cover;
-    border-image: fill;
-    @include friend-card(3);
-
-    img {
-      width: auto;
-      height: 150px;
-      border-radius: $border-radius;
-      object-fit: cover;
-      display: block;
-      border-image: fill;
-      @include box-shadow;
-      filter: grayscale(0%);
-      transition: filter 0.5s ease;
-    }
-
-    &:hover {
-      filter: grayscale(100%);
-      transform: scale(1.05);
-      @include box-shadow;
-    }
-  }
-}
-
-  .avatar-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    box-sizing: border-box;
-    text-align: left;
-    transition: background 0.3s ease;
-
-    p {
-      margin: 0;
-      font-size: 14px;
-      font-weight: bold;
-      text-align: left;
-    }
-  }
-
-
-// Container para reseñas
-.reviews-container {
-  max-width: 95%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding: 15px;
-  background-color: $second-background-color;
-  border-radius: $border-radius;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
-.reviews-container2{
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: $second-background-color;
-}
-
-.review{
-  max-width: 95%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  background-color: $second-background-color;
-  border-radius: $border-radius;
-  padding: 10px;
-}
-
-.review-user{
-  flex: 1;
-  background-color: $background-color;
-  border-radius: $border-radius;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-
-  p {
-    margin: 0;
-    font-size: 18px;
-    font-weight: bold;
-    color: $text-color-light;
-    text-align: center;
-  }
-
-  .review-movie{
-      @include review-card(1);
-      position: relative;
-
-      img {
-        width: 100%;
-        height: 200px;
-        border-radius: $border-radius;
-        object-fit: cover;
-        display: block;
-        border-image: fill;
-        @include box-shadow;
-      }
-
-      .movie-info {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        padding: 10px;
-        box-sizing: border-box;
-        text-align: left;
-        transition: background 0.3s ease;
-
-        p {
-          margin: 0;
-          font-size: 18px;
-          font-weight: bold;
-          text-align: left;
-        }
-      }
-      &:hover {
-        transform: scale(1.05);
-        @include box-shadow;
-      }
-  }
-}
-
-.review-content{
-  flex: 2;
-  background-color: $background-color;
-  border-radius: $border-radius;
-  padding: 20px;
-  box-sizing: border-box;
-
-  p {
-    margin: 0;
-    font-size: 16px;
-    color: $text-color-light;
-  }
-}
-}
-
-// Media Query para dispositivos móviles
-@media (max-width: $mobile-breakpoint) {
-  .reviews-container {
-    flex-direction:column;
-
-    .reviews-container2{
-      flex-direction:column;
-      margin-bottom: 5px;
-      align-items: center;
-
-      .review{
-        flex-direction:column;
-        align-items: center;
-
-        .review-user {
-          width: 100%;
-        }
-      }
-      .review-content {
-        width: 100%;
-      }
-    }
-  }
-}
 
 // Reloj selector de tiempo
 .container-reloj {
@@ -842,25 +327,6 @@ main {
   height: 50px;
 }
 
-
-.filters {
-  @include flex-center;
-  flex-direction: column;
-  margin-bottom: 20px;
-
-  .form-select {
-    width: 80%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 6px;
-    border: 2px solid $highlight-color;
-    background-color: $second-background-color;
-    color: #ffffff;
-    cursor: pointer;
-    font-size: 16px;
-  }
-}
-
 .start-button {
     background-color: $highlight-color;
     color: #ffffff;
@@ -877,47 +343,6 @@ main {
     }
   }
  
-
-
-.topbar {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: $main-padding;
-  background-color: $second-background-color;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-
-  .topbar-icon {
-    background-color: $second-background-color;
-    border: none;
-    cursor: pointer;
-
-    .active-icon {
-      background-color: $highlight-color;
-    }
-  }
-
-  // Estilos para cada ícono
-  .icon {
-  position: relative;
-
-  img {
-  width: $icon-size;
-  height: $icon-size;
-  }
-
-  &:hover{
-    color: $highlight-color;
-  }
-  }
-
-  @media only screen and (min-width: $mobile-breakpoint) {
-    display: none
-  }
-}
-
 // Estilo del footer
 footer {
   text-align: center;
@@ -932,4 +357,44 @@ footer {
       display: none;
     }
   }
+}
+
+/* Estilos para la barra de búsqueda */
+.search {
+  position: relative;
+}
+
+/* Contenedor de los resultados */
+.search-results {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #f1f1f1;
+  border: 20px #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: none;
+}
+
+.search-result-item {
+  padding: 8px;
+  cursor: pointer;
+  text-align: right;
+}
+
+.search-result-item:hover {
+  background-color: #f1f1f1;
+}
+
+.search-results p {
+  padding: 8px;
+  color: #F2AA42;
+}
+
+.genre-select {
+  display: block; /* Asegura que el select esté visible */
+  margin: 10px 0; /* Agregar margen si es necesario */
 }
