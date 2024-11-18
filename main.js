@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorText = document.getElementById("error-text");
     const closeErrorPopup = document.getElementById("close-error-popup");
     const genreSelect = document.getElementById('genre-select');
-    const searchInput = document.getElementById('search-input'); 
+    const searchInput = document.getElementById('search-input');
     const searchResultsContainer = document.getElementById('search-results');
 
     const cortometrajes = {
@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
         animacion: ["La Princesa Mononoke de Hayao Miyazaki", "Spirited Away de Hayao Miyazaki"]
     };
 
-    // Concatenar todas las películas de las categorías
     const todasLasPeliculas = [
         ...Object.values(cortometrajes).flat(),
         ...Object.values(peliculasMedias).flat(),
@@ -55,37 +54,74 @@ document.addEventListener('DOMContentLoaded', () => {
         ...Object.values(peliculasExtensas).flat()
     ];
 
-    // Función para mostrar los resultados de la búsqueda
+    const STORAGE_KEY = "busquedasRecientes";
+
+    function obtenerBusquedasRecientes() {
+        const datos = localStorage.getItem(STORAGE_KEY);
+        return datos ? JSON.parse(datos) : [];
+    }
+
+    function guardarBusqueda(query) {
+        let busquedasRecientes = obtenerBusquedasRecientes();
+        busquedasRecientes = busquedasRecientes.filter(busqueda => busqueda !== query);
+        busquedasRecientes.unshift(query);
+        if (busquedasRecientes.length > 10) busquedasRecientes.pop();
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(busquedasRecientes));
+    }
+
     function mostrarResultadosBusqueda(query) {
         const peliculasFiltradas = todasLasPeliculas.filter(pelicula =>
             pelicula.toLowerCase().includes(query.toLowerCase())
         );
 
-        // Limpiar los resultados previos
+        const busquedasRecientes = obtenerBusquedasRecientes().filter(busqueda =>
+            busqueda.toLowerCase().includes(query.toLowerCase())
+        );
+
         searchResultsContainer.innerHTML = '';
 
+        if (busquedasRecientes.length > 0) {
+            const recentTitle = document.createElement('p');
+            recentTitle.textContent = "Búsquedas recientes:";
+            searchResultsContainer.appendChild(recentTitle);
+
+            busquedasRecientes.forEach(busqueda => {
+                const resultItem = document.createElement('div');
+                resultItem.classList.add('search-result-item');
+                resultItem.textContent = busqueda;
+
+                resultItem.addEventListener('click', () => {
+                    searchInput.value = busqueda;
+                    searchResultsContainer.innerHTML = '';
+                    searchResultsContainer.style.display = 'none';
+                });
+
+                searchResultsContainer.appendChild(resultItem);
+            });
+        }
+
         if (peliculasFiltradas.length > 0) {
-            peliculasFiltradas.sort().forEach(pelicula => {
+            peliculasFiltradas.forEach(pelicula => {
                 const resultItem = document.createElement('div');
                 resultItem.classList.add('search-result-item');
                 resultItem.textContent = pelicula;
 
                 resultItem.addEventListener('click', () => {
                     searchInput.value = pelicula;
-                    searchResultsContainer.innerHTML = ''
+                    guardarBusqueda(pelicula);
+                    searchResultsContainer.innerHTML = '';
                     searchResultsContainer.style.display = 'none';
                 });
 
                 searchResultsContainer.appendChild(resultItem);
             });
-            searchResultsContainer.style.display = 'block'; // Mostrar la lista
-        } else {
+            searchResultsContainer.style.display = 'block';
+        } else if (busquedasRecientes.length === 0) {
             searchResultsContainer.innerHTML = '<p>No se encontraron resultados.</p>';
             searchResultsContainer.style.display = 'block';
         }
     }
 
-    // Escuchar el evento de entrada en el campo de búsqueda
     searchInput.addEventListener('input', (e) => {
         const query = e.target.value;
         if (query) {
@@ -96,7 +132,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Función para obtener una recomendación aleatoria basada en duración y género
+    const searchForm = document.querySelector('.search form');
+    searchForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const query = searchInput.value.trim();
+        if (query) {
+            guardarBusqueda(query);
+            searchInput.value = '';
+            searchResultsContainer.innerHTML = '';
+            searchResultsContainer.style.display = 'none';
+        }
+    });
+
     function obtenerRecomendacion(duracion, genero = "drama") {
         genero = genero.toLowerCase();
         const categorias = { cortometrajes, peliculasMedias, peliculasLargas, peliculasExtensas };
@@ -116,7 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return opciones[indiceAleatorio];
     }
 
-    // Función para mostrar un pop-up (recomendación o error)
     function mostrarPopup(mensaje, esError = false) {
         if (esError) {
             errorText.textContent = mensaje;
@@ -134,7 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // Función para iniciar el proceso de recomendación
     function iniciarRecomendacion() {
         const horas = parseInt(horasInput.value) || 0;
         const minutos = parseInt(minutosInput.value) || 0;
@@ -150,7 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
         mostrarPopup(`Tu recomendación es: ${recomendacion}. ¡Que disfrutes la película!`);
     }
 
-    // Asignación de eventos
     startButton.addEventListener('click', iniciarRecomendacion);
     horasInput.addEventListener('keypress', (e) => {
         if (e.key === "Enter") iniciarRecomendacion();
@@ -159,4 +203,3 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === "Enter") iniciarRecomendacion();
     });
 });
-
