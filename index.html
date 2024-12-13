@@ -26,22 +26,20 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">            
         </div>
-      </nav>
-  </header>
-
-
-<!-- Contenido del Home -->
-    <main>
-
         <div class="search">
             <form class="d-flex" role="search">
                 <input id="search-input" class="form-control me-2" type="search" placeholder="Buscar película..." aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Buscar</button>
             </form>
             <div id="search-results">
-                </div>
             </div>
         </div>
+      </nav>
+  </header>
+
+
+<!-- Contenido del Home -->
+    <main>
 
 
 
@@ -110,6 +108,52 @@
 
 <div class="background-overlay"></div>
 
+<section class="section-title">
+    <p>Tendencias</p>
+</section>
+<section class="movies">
+      <div class="carousel-container">
+         <div class="movie-carousel">
+            <div class="movie" data-title="Kind Of Kindness" data-length="2h 45m" data-description="Tres historias: un hombre que trata de asumir el control de su propia vida, un policía cuya esposa parece una persona distinta y una mujer que busca a alguien que tiene una habilidad especial.">
+                <img src="img/kindofkindness.webp" alt="kindofkindness">
+                <div class="movie-info">
+                    <p>Kind Of Kindnes</p>
+                    <p class="movie-length">2h 45m</p>
+                    </div>
+            </div>
+            <div class="movie" data-title="La Sustancia" data-length="2h 21m" data-description="Elisabeth Sparkle se enfrenta a un golpe devastador el día de su cumpleaños cuando su jefe la despide. En medio de su angustia, un laboratorio le ofrece una sustancia que promete transformarla en una versión mejorada de sí misma.">
+                <img src="img/lasustancia.jpg" alt="lasustancia">
+                <div class="movie-info">
+                    <p>La Sustancia</p>
+                    <p class="movie-length">2h 21m</p>
+                </div>
+            </div>
+            <div class="movie" data-title="Alien: Romulus" data-length="1h 59m" data-description="Un grupo de colonos espaciales se enfrenta a la criatura más aterradora del universo en una nave espacial abandonada a la que han accedido para recuperar cámaras de criostasis, con las que piensan huir a un planeta lejano.">
+                <img src="img/alienromulus.jpg" alt="alienromulus">
+                <div class="movie-info">
+                    <p>Alien: Romulus</p>
+                    <p class="movie-length">1h 59m</p>
+                </div>
+            </div>
+            <div class="movie" data-title="Late Night With The Devil" data-length="1h 29m" data-description="Halloween de 1977. Jack, el presentador de un programa de televisión, entrevista a la superviviente del suicidio en masa de una secta satánica. Al hacerlo, libera a un demonio que convertirá su vida, y las de muchos otros, en una pesadilla.">
+                <img src="img/Late Night With The Devil.jpg" alt="latenight">
+                <div class="movie-info">
+                    <p>Late Night With The Devil</p>
+                    <p class="movie-length">1h 29m</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+   <!-- Card oculta que muestra información -->
+    <div id="movie-card" class="movie-card hidden">
+    <button id="close-card">X</button>
+    <h2 id="movie-title"></h2>
+    <p id="movie-length"></p>
+    <p id="movie-description"></p>
+    </div>
+
 </main>
 
 <!-- Pie de página -->
@@ -119,6 +163,6 @@
 
 <!-- Script JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+<script src="busquedas.js" type="module"></script>
 </body>
 </html>

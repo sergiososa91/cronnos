@@ -1,4 +1,7 @@
+import { obtenerBusquedasRecientes, guardarBusqueda, limpiarBusquedasRecientes } from './busquedas.js';
+
 document.addEventListener('DOMContentLoaded', () => {
+    // ==== ELEMENTOS DEL DOM ====
     const horasInput = document.querySelector('.time-section input[aria-label="Horas"]');
     const minutosInput = document.querySelector('.time-section input[aria-label="Minutos"]');
     const startButton = document.querySelector('.start-button');
@@ -60,25 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ...Object.values(peliculasExtensas).flat()
     ];
 
-    function obtenerRecomendacion(duracion, genero = "drama") {
-        genero = genero.toLowerCase();
-        const categorias = { cortometrajes, peliculasMedias, peliculasLargas, peliculasExtensas };
-
-        let opciones;
-        if (duracion <= 30) {
-            opciones = categorias.cortometrajes[genero] || categorias.cortometrajes["drama"];
-        } else if (duracion <= 90) {
-            opciones = categorias.peliculasMedias[genero] || categorias.peliculasMedias["drama"];
-        } else if (duracion <= 150) {
-            opciones = categorias.peliculasLargas[genero] || categorias.peliculasLargas["drama"];
-        } else {
-            opciones = categorias.peliculasExtensas[genero] || categorias.peliculasExtensas["drama"];
-        }
-
-        const indiceAleatorio = Math.floor(Math.random() * opciones.length);
-        return opciones[indiceAleatorio];
-    }
-
+    // Muestra un popup con un mensaje
     function mostrarPopup(mensaje, esError = false) {
         if (esError) {
             errorText.textContent = mensaje;
@@ -89,13 +74,22 @@ document.addEventListener('DOMContentLoaded', () => {
             popup.style.display = "block";
             document.getElementById("close-popup").onclick = () => popup.style.display = "none";
         }
-
-        window.onclick = (event) => {
-            if (event.target === errorPopup) errorPopup.style.display = "none";
-            if (event.target === popup) popup.style.display = "none";
-        };
     }
 
+    // Obtener una recomendación basada en duración y género
+    function obtenerRecomendacion(duracion, genero = "drama") {
+        const categorias = { cortometrajes, peliculasMedias, peliculasLargas, peliculasExtensas };
+        let opciones;
+
+        if (duracion <= 30) opciones = categorias.cortometrajes[genero] || categorias.cortometrajes["drama"];
+        else if (duracion <= 90) opciones = categorias.peliculasMedias[genero] || categorias.peliculasMedias["drama"];
+        else if (duracion <= 150) opciones = categorias.peliculasLargas[genero] || categorias.peliculasLargas["drama"];
+        else opciones = categorias.peliculasExtensas[genero] || categorias.peliculasExtensas["drama"];
+
+        return opciones[Math.floor(Math.random() * opciones.length)];
+    }
+
+    // Inicia la recomendación basándose en los inputs del usuario
     function iniciarRecomendacion() {
         const horas = parseInt(horasInput.value) || 0;
         const minutos = parseInt(minutosInput.value) || 0;
@@ -109,37 +103,43 @@ document.addEventListener('DOMContentLoaded', () => {
         const genero = genreSelect ? genreSelect.value.toLowerCase() : null;
         const recomendacion = obtenerRecomendacion(duracionTotal, genero);
         mostrarPopup(`Tu recomendación es: ${recomendacion}. ¡Que disfrutes la película!`);
+
+        guardarBusqueda(recomendacion, genero); // Guarda la recomendación como búsqueda reciente
     }
 
+    // ==== INTERACCIÓN CON LOS ELEMENTOS ====
     startButton.addEventListener('click', iniciarRecomendacion);
-    horasInput.addEventListener('keypress', (e) => {
-        if (e.key === "Enter") iniciarRecomendacion();
-    });
-    minutosInput.addEventListener('keypress', (e) => {
-        if (e.key === "Enter") iniciarRecomendacion();
+    horasInput.addEventListener('keypress', (e) => { if (e.key === "Enter") iniciarRecomendacion(); });
+    minutosInput.addEventListener('keypress', (e) => { if (e.key === "Enter") iniciarRecomendacion(); });
+
+    // Funcionalidad de búsqueda
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim();
+        if (query) {
+            mostrarResultadosBusqueda(query);
+        } else {
+            searchResultsContainer.innerHTML = '';
+            searchResultsContainer.style.display = 'none';
+        }
     });
 
+    // Mostrar tarjeta de película al hacer clic en un elemento
+    movies.forEach(movie => {
+        movie.addEventListener('click', () => {
+            const title = movie.getAttribute('data-title');
+            const length = movie.getAttribute('data-length');
+            const description = movie.getAttribute('data-description');
 
-// Agregamos un evento de click a cada película
-movies.forEach(movie => {
-    movie.addEventListener('click', () => {
-      // Obtenemos los datos de la película desde los atributos "data"
-      const title = movie.getAttribute('data-title');
-      const length = movie.getAttribute('data-length');
-      const description = movie.getAttribute('data-description');
-  
-      // Asignamos los datos a la tarjeta
-      movieTitle.textContent = title;
-      movieLength.textContent = length;
-      movieDescription.textContent = description;
-  
-      // Mostramos la tarjeta
-      movieCard.classList.remove('hidden');
+            movieTitle.textContent = title;
+            movieLength.textContent = length;
+            movieDescription.textContent = description;
+
+            movieCard.classList.remove('hidden');
+        });
     });
-  });
-  
-  // Agregamos el evento de click para cerrar la tarjeta
-  closeCard.addEventListener('click', () => {
-    movieCard.classList.add('hidden');
-  });
+
+    // Cierra la tarjeta de película
+    closeCard.addEventListener('click', () => {
+        movieCard.classList.add('hidden');
+    });
 });
